@@ -14,15 +14,38 @@ using namespace std;
 class Produs {
 protected:
     string nume;
-    double pret;
+    float pret;
+    float cantitate;
+
 public:
-    Produs(string  pnume, double ppret) {
-        this->nume =pnume;
-        this->pret =ppret;
+    Produs(string pnume, float ppret, float pcantitate) {
+        this->nume = pnume;
+        this->pret = ppret;
+        this->cantitate = pcantitate;
+    }
+
+    Produs(const Produs& ob);
+
+    void citire(){
+        cin>>nume>>pret>>cantitate;
+    }
+
+    void afisare() {
+        cout<<nume<<' '<<pret<<' '<<cantitate<<endl;
+    }
+
+    void print_nume(std:: ostream& os) {
+        os << this->nume;
     }
 
 
 };
+
+Produs::Produs(const Produs& ob) {
+    nume = ob.nume;
+    pret = ob.pret;
+    cantitate = ob.cantitate;
+}
 
 
 #endif //TEMA_LAB_PRODUS_H
